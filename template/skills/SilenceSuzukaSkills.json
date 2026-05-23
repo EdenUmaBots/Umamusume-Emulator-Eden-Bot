@@ -1,0 +1,37 @@
+{
+    "skill_priority": [
+        "Professor of Curvature",
+        "Swinging Maestro",
+        "Unrestrained",
+        "Groundwork",
+        "Early Lead",
+        "Fast-Paced",
+        "Rosy Outlook",
+        "Final Push",
+        "Front Runner Straightaways",
+        "Straightaway Recovery",
+        "Resplendent Red Ace",
+        "Red Shift/LP1211-M",
+        "Straightaway Acceleration",
+        "Leader's Pride",
+        "Tail Held High",
+        "Corner Acceleration",
+        "Concentration",
+        "Corner Adept",
+        "Focus",
+        "Corner Connoisseur",
+        "Left-Handed",
+        "Tether"
+    ],
+    "gold_skill_upgrades": {
+        "Professor of Curvature": "Corner Adept",
+        "Swinging Maestro": "Corner Recovery",
+        "Gourmand": "Hydrate",
+        "Rushing Gale!": "Straightaway Acceleration",
+        "Unrestrained": "Final Push",
+        "Killer Tunes": "Up-Tempo",
+        "Beeline Burst": "Straightaway Adept",
+        "Determined Descent": "Straight Descent",
+        "Mystifying Murmur": "Murmur"
+    }
+}

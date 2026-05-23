@@ -92,6 +92,43 @@ def should_continue_restarting(current_restart_count: int, max_restart_times: in
     return True, "Continue restarting"
 
 
+def execute_skill_purchase_workflow(available_points: int):
+    """Execute the skill purchase workflow"""
+    log_info(f"=== Auto Skill Purchase Workflow ===")
+    
+    # Import here to avoid circular imports
+    from core.Ura.skill_auto_purchase import click_image_button
+    from core.Ura.skill_recognizer import scan_all_skills_with_scroll
+    from core.Ura.skill_purchase_optimizer import load_skill_config, create_purchase_plan, filter_affordable_skills
+    from core.Ura.skill_auto_purchase import execute_skill_purchases
+    from core.Ura.skill_recognizer import deduplicate_skills
+    
+    # Tap end skill button
+    if not click_image_button("assets/buttons/end_skill.png", "end skill button", max_attempts=5):
+        log_info(f"Failed to tap end skill button")
+        return
+    
+    time.sleep(2)
+    
+    # Scan for available skills
+    scan_result = scan_all_skills_with_scroll(confidence=0.9, brightness_threshold=150, max_scrolls=20)
+    all_available_skills = scan_result.get('all_skills', [])
+    
+    if all_available_skills:
+        # Deduplicate and optimize skill purchase
+        deduplicated_skills = deduplicate_skills(all_available_skills, similarity_threshold=0.8)
+        config = load_skill_config()
+        # Use end_career=True to buy all available skills instead of just priority skills
+        purchase_plan = create_purchase_plan(deduplicated_skills, config, end_career=True)
+        
+        if purchase_plan:
+            affordable_skills, total_cost, remaining_points = filter_affordable_skills(purchase_plan, available_points)
+            if affordable_skills:
+                execute_skill_purchases(affordable_skills)
+    
+    # Return to complete career screen
+    return_to_complete_career_screen()
+
 
 def return_to_complete_career_screen():
     """Return to the complete career screen after skill purchase"""
@@ -122,7 +159,7 @@ def finish_career_completion() -> bool:
     
     # Navigate through completion screens with spam-tap strategy
     start_time = time.time()
-    max_duration_seconds = 150  # Safety timeout to avoid infinite loop
+    max_duration_seconds = 120  # Safety timeout to avoid infinite loop
 
     while time.time() - start_time < max_duration_seconds:
         # Always check if we're already on Career Home
@@ -138,7 +175,6 @@ def finish_career_completion() -> bool:
         for template_path, name in [
             ("assets/buttons/next_btn.png", "next button"),
             ("assets/buttons/close.png", "close button"),
-            ("assets/buttons/cancel_btn.png", "cancel button"),
             ("assets/buttons/to_home.png", "to_home button"),
         ]:
             matches = match_template(screenshot, template_path, confidence=0.8)
@@ -154,7 +190,7 @@ def finish_career_completion() -> bool:
             log_info(f"{first_button_name} detected at ({cx}, {cy}) - spamming taps for 10s")
 
             # Spam tap on detected button position for 10 seconds
-            spam_end = time.time() + 15
+            spam_end = time.time() + 10
             while time.time() < spam_end:
                 tap(cx, cy)
                 time.sleep(0.08)
@@ -286,11 +322,8 @@ def start_career() -> bool:
     
     try:
         # Step 1: Tap Career Home and wait 10s
-        career_home_matches = match_template(take_screenshot(), "assets/buttons/Career_Home.png", confidence=0.9)
+        career_home_matches = match_template(take_screenshot(), "assets/buttons/Career_Home.png", confidence=0.8)
         if career_home_matches:
-            time.sleep(2)
-            tap(590, 1819) # Tap fixed coordinates for home button to avoid misclicks
-            time.sleep(2)
             x, y, w, h = career_home_matches[0]
             center = (x + w//2, y + h//2)
             tap(center[0], center[1])
@@ -342,6 +375,8 @@ def start_career() -> bool:
             time.sleep(0.5)
             tap(515, 1600)
             time.sleep(5)
+            tap(140,1460) #event
+            time.sleep(3)
         else:
             pass
         
@@ -366,7 +401,7 @@ def start_career() -> bool:
             log_info(f"Restoring TP")
             time.sleep(3)
             
-            tap(920, 275) # Recover TP - Use Button (GEMS)
+            tap(920, 275) # Recover TP - Use Button
             time.sleep(1)
             tap(945, 1010) # Max Button
             time.sleep(1)
@@ -467,6 +502,9 @@ def complete_career(current_restart_count: int, max_restart_times: int,
     current_restart_count += 1
     log_info(f"Restart count: {current_restart_count}/{max_restart_times}")
     
+    # Execute skill purchase workflow (if skill points available)
+    if skill_points > 0:
+        execute_skill_purchase_workflow(skill_points)
     
     # Complete the career
     success = finish_career_completion()

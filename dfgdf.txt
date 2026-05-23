@@ -1,0 +1,64 @@
+[19:29:15] Modern GUI initialized successfully
+[19:29:15] Configuration loaded from: config.json
+[19:29:23] Configuration auto-saved
+[19:29:24] Starting Uma Musume Auto-Train Bot...
+[19:29:24] Bot started successfully
+[19:29:24] Checking ADB connection...
+[19:29:24] Found main.py, starting automation...
+[19:29:24] Bot process started successfully
+[19:29:25] Bot process finished with code: 0
+[19:29:25] Bot stopped
+[19:29:26] INFO - ✅ Using custom Tesseract models from: C:\Users\Administrator\Downloads\UMAT_0.1\UMAT\tessdata
+[19:29:26] INFO -    Available models: eng.traineddata
+[19:29:26] INFO - Uma Auto - URA Version!
+[19:29:26] INFO - ========================================
+[19:29:26] INFO - Mode: URA
+[19:29:26] INFO - Connected devices: 1
+[19:29:26] INFO -   emulator-5556
+[19:29:26] INFO - Using ADB capture method: adb
+[19:29:26] ERROR - ADB command failed: Command '['C:\\Users\\Administrator\\Downloads\\UMAT_0.1\\UMAT\\toolkit\\python\\Lib\\site-packages\\adbutils\\binaries\\adb.exe', '-s', '127.0.0.1:5557', 'shell', 'wm', 'size']' returned non-zero exit status 1.
+[19:29:26] ERROR - ADB command failed: Command '['C:\\Users\\Administrator\\Downloads\\UMAT_0.1\\UMAT\\toolkit\\python\\Lib\\site-packages\\adbutils\\binaries\\adb.exe', '-s', '127.0.0.1:5557', 'shell', 'screencap']' returned non-zero exit status 1.
+[19:29:26] ERROR - Error taking ADB screenshot: Failed to take screenshot
+[19:29:26] ERROR - Error getting screen size: Failed to take screenshot
+[19:29:26] INFO - Device screen size: 1080x1920
+[19:29:26] ERROR - ADB command failed: Command '['C:\\Users\\Administrator\\Downloads\\UMAT_0.1\\UMAT\\toolkit\\python\\Lib\\site-packages\\adbutils\\binaries\\adb.exe', '-s', '127.0.0.1:5557', 'shell', 'getprop', 'ro.product.model']' returned non-zero exit status 1.
+[19:29:26] ERROR - ADB command failed: Command '['C:\\Users\\Administrator\\Downloads\\UMAT_0.1\\UMAT\\toolkit\\python\\Lib\\site-packages\\adbutils\\binaries\\adb.exe', '-s', '127.0.0.1:5557', 'shell', 'getprop', 'ro.build.version.release']' returned non-zero exit status 1.
+[19:29:26] INFO -
+[19:29:26] INFO - SUCCESS: Starting automation...
+[19:29:26] INFO - Make sure Umamusume is running on your device!
+[19:29:26] INFO - Press Ctrl+C to stop the automation.
+[19:29:26] INFO - ========================================
+[19:29:26] ERROR - ADB command failed: Command '['C:\\Users\\Administrator\\Downloads\\UMAT_0.1\\UMAT\\toolkit\\python\\Lib\\site-packages\\adbutils\\binaries\\adb.exe', '-s', '127.0.0.1:5557', 'shell', 'screencap']' returned non-zero exit status 1.
+[19:29:26] ERROR - Error taking ADB screenshot: Failed to take screenshot
+[19:29:26] INFO -
+[19:29:26] ERROR - Automation error: Failed to take screenshot
+[19:29:31] Configuration auto-saved
+[19:29:34] Starting Uma Musume Auto-Train Bot...
+[19:29:34] Bot started successfully
+[19:29:34] Checking ADB connection...
+[19:29:34] Found main.py, starting automation...
+[19:29:34] Bot process started successfully
+[19:29:35] INFO - ✅ Using custom Tesseract models from: C:\Users\Administrator\Downloads\UMAT_0.1\UMAT\tessdata
+[19:29:35] INFO -    Available models: eng.traineddata
+[19:29:35] INFO - Uma Auto - URA Version!
+[19:29:35] INFO - ========================================
+[19:29:35] INFO - Mode: URA
+[19:29:35] INFO - Connected devices: 1
+[19:29:35] INFO -   emulator-5556
+[19:29:35] INFO - Initialized Nemu IPC capture with method: nemu_ipc
+[19:29:35] INFO - Note: DLL connection messages may appear in console (won't affect GUI)
+[19:29:35] INFO - Device screen size: 1080x1920
+[19:29:35] ERROR - ADB command failed: Command '['C:\\Users\\Administrator\\Downloads\\UMAT_0.1\\UMAT\\toolkit\\python\\Lib\\site-packages\\adbutils\\binaries\\adb.exe', '-s', '127.0.0.1:5557', 'shell', 'getprop', 'ro.product.model']' returned non-zero exit status 1.
+[19:29:35] ERROR - ADB command failed: Command '['C:\\Users\\Administrator\\Downloads\\UMAT_0.1\\UMAT\\toolkit\\python\\Lib\\site-packages\\adbutils\\binaries\\adb.exe', '-s', '127.0.0.1:5557', 'shell', 'getprop', 'ro.build.version.release']' returned non-zero exit status 1.
+[19:29:35] INFO -
+[19:29:35] INFO - SUCCESS: Starting automation...
+[19:29:35] INFO - Make sure Umamusume is running on your device!
+[19:29:35] INFO - Press Ctrl+C to stop the automation.
+[19:29:35] INFO - ========================================
+[19:29:37] Stopping bot...
+[19:29:37] Terminating bot process...
+[19:29:37] Bot process terminated gracefully
+[19:29:39] Bot stopped successfully
+[19:29:37] Bot process terminated
+[19:29:39] Bot stopped
+

@@ -286,11 +286,8 @@ def start_career() -> bool:
     
     try:
         # Step 1: Tap Career Home and wait 10s
-        career_home_matches = match_template(take_screenshot(), "assets/buttons/Career_Home.png", confidence=0.9)
+        career_home_matches = match_template(take_screenshot(), "assets/buttons/Career_Home.png", confidence=0.8)
         if career_home_matches:
-            time.sleep(2)
-            tap(590, 1819) # Tap fixed coordinates for home button to avoid misclicks
-            time.sleep(2)
             x, y, w, h = career_home_matches[0]
             center = (x + w//2, y + h//2)
             tap(center[0], center[1])
@@ -312,6 +309,10 @@ def start_career() -> bool:
             time.sleep(2)
             tap(530, 1575)
             time.sleep(4)
+            tap(570, 500) # GOLD SHIP EVENT
+            time.sleep(2)
+            tap(815, 1800) # GOLD SHIP EVENT
+            time.sleep(5) # GOLD SHIP EVENT
         else:
             return False
         
@@ -366,7 +367,7 @@ def start_career() -> bool:
             log_info(f"Restoring TP")
             time.sleep(3)
             
-            tap(920, 275) # Recover TP - Use Button (GEMS)
+            tap(920, 470) # Recover TP - Use Button (TP POTS)
             time.sleep(1)
             tap(945, 1010) # Max Button
             time.sleep(1)

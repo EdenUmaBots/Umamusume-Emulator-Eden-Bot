@@ -193,7 +193,7 @@ def handle_popups(screenshot):
         ("assets/buttons/view_results.png", 0.8, 0.3, "view_results"),
         ("assets/buttons/race_btn.png", 0.9, 0.3, "race"),
         ("assets/buttons/skip_off.png", 0.95, 0.3, "skip_off"),
-        ("assets/buttons/skip_x1.png", 0.9, 0.3, "skip_x1"),
+        ("assets/buttons/skip_x1.png", 0.80, 0.3, "skip_x1"),
     ]
 
     for image_path, confidence, delay, label in POPUPS:
@@ -224,11 +224,8 @@ def start_career():
     
     try:
         # Step 1: Tap Career Home and wait 10s
-        career_home_matches = match_template(take_screenshot(), "assets/buttons/Career_Home.png", confidence=0.9)
+        career_home_matches = match_template(take_screenshot(), "assets/buttons/Career_Home.png", confidence=0.8)
         if career_home_matches:
-            time.sleep(2)
-            tap(590, 1819) # Tap fixed coordinates for home button to avoid misclicks
-            time.sleep(2)
             x, y, w, h = career_home_matches[0]
             center = (x + w//2, y + h//2)
             tap(center[0], center[1])
@@ -250,7 +247,6 @@ def start_career():
             time.sleep(2)
             tap(530, 1575)
             time.sleep(4)
-
         else:
             return False
         
@@ -281,6 +277,8 @@ def start_career():
             time.sleep(0.5)
             tap(515, 1600)
             time.sleep(5)
+            tap(140,1460) #event
+            time.sleep(3)
         else:
             pass
         
@@ -305,7 +303,7 @@ def start_career():
             log_info(f"Restoring TP")
             time.sleep(3)
             
-            tap(920, 275) # Recover TP - Use Button (GEMS)
+            tap(920, 275) # Recover TP - Use Button
             time.sleep(1)
             tap(945, 1010) # Max Button
             time.sleep(1)
@@ -323,7 +321,7 @@ def start_career():
             pass
         
         # Step 7B: Start Career 2
-        start_career_2_matches = match_template(take_screenshot(), "assets/buttons/start_career_2.png", confidence=0.9)
+        start_career_2_matches = match_template(take_screenshot(), "assets/buttons/start_career_2.png", confidence=0.8)
         if start_career_2_matches:
             x, y, w, h = start_career_2_matches[0]
             center = (x + w//2, y + h//2)
@@ -490,10 +488,6 @@ def career_lobby():
         if career_home:
             start_career()
             continue
-        
-        menu_btn = match_template(screenshot, "assets/buttons/menu_btn.png", confidence=0.5)
-        if menu_btn := match_template(screenshot, "assets/buttons/menu_btn.png", confidence=0.5):
-            tap(590, 1819) # Tap fixed coordinates for home button to avoid misclicks
 
         # Check cancel button
         log_debug(f"Checking for cancel button...")
